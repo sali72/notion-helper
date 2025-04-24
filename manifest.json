@@ -2,14 +2,16 @@
   "name": "Notion Helper",
   "version": "1.0.1",
   "description": "An extension to enhance your experience with Notion",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": [
     "storage",
-    "activeTab",
+    "activeTab"
+  ],
+  "host_permissions": [
     "*://*.notion.so/*",
     "*://*.notion.site/*"
   ],
-  "browser_action": {
+  "action": {
     "default_popup": "src/popup/popup.html",
     "default_icon": {
       "32": "/logo/logo-32.png",
@@ -18,9 +20,8 @@
     }
   },
   "background": {
-    "scripts": [
-      "src/background.js"
-    ]
+    "service_worker": "src/background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
